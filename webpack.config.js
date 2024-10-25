@@ -10,4 +10,13 @@ module.exports = {
 
   mode: 'development',
   watch: true,
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 };
