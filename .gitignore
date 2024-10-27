@@ -1,3 +1,5 @@
+app/bundled.js
+dist/
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -10,7 +12,6 @@
 *~
 *.sass-cache
 node_modules/
-dist/
 .tmp/
 
 # OS or Editor folders
