@@ -1,4 +1,5 @@
 const { prototype } = require('events');
+const { watch } = require('fs');
 const path = require('path');
 
 const postCSSPlugins = [
@@ -17,13 +18,14 @@ module.exports = {
   },
 
   devServer: {
+    watchFiles: ['app/**/*.html'],
     static: {
       directory: path.join(__dirname, 'app'),
+      watch: false,
     },
 
     hot: true,
     port: 3000,
-    liveReload: false,
   },
 
   mode: 'development',
