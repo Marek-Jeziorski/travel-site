@@ -1,3 +1,4 @@
+const { prototype } = require('events');
 const path = require('path');
 
 const postCSSPlugins = [
@@ -15,8 +16,17 @@ module.exports = {
     path: path.resolve(__dirname, 'app'),
   },
 
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'app'),
+    },
+
+    hot: true,
+    port: 3000,
+    liveReload: false,
+  },
+
   mode: 'development',
-  watch: true,
 
   module: {
     rules: [
