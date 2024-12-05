@@ -33,11 +33,15 @@
     font-weight: 100;
   }
 
-  &-b-margin-small {
+  &--b-margin-small {
     margin-bottom: 0.5em;
   }
 
-  &-b-margin-large {
+  &--b-margin-large {
     margin-bottom: 1.6em;
+  }
+
+  &--no-t-margin {
+    margin-top: 0;
   }
 }
