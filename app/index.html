@@ -18,20 +18,32 @@
     />
   </head>
   <body>
-    <header>
-      <img src="assets/images/icons/clear-view-escapes.svg" />
-      <a href="#" class="btn">Get in Touch</a>
-      <nav>
-        <ul>
-          <li><a href="#our-beginning">Our Beginning</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-        </ul>
-      </nav>
+    <header class="site-header">
+      <div class="wrapper">
+        <div class="site-header__logo">
+          <img src="assets/images/icons/clear-view-escapes.svg" />
+        </div>
+
+        <div class="site-header__menu-icon">
+          <div class="site-header__menu-icon__middle"></div>
+        </div>
+        <div class="site-header__menu-content">
+          <div class="site-header__btn-container">
+            <a href="#" class="btn">Get in Touch</a>
+          </div>
+          <nav class="primary-nav">
+            <ul>
+              <li><a href="#our-beginning">Our Beginning</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
 
     <section class="large-hero">
-      <picture>
+      <picture class="large-hero__image">
         <source
           srcset="
             assets/images/hero--large-i.jpg        1920w,
@@ -54,7 +66,6 @@
           media="(min-width: 640px)"
         />
         <img
-          class="large-hero__image"
           srcset="
             assets/images/hero--smaller-i.jpg         640w,
             assets/images/hero--smaller-hi-dpi-i.jpg 1280w
@@ -103,9 +114,7 @@
         </div>
 
         <div class="row row--gutters">
-          <div
-            class="row__medium-4 row__medium-4--larger row__b-margin-until-medium"
-          >
+          <div class="row__medium-4 row__b-margin-until-medium">
             <picture>
               <source
                 sizes="404px"
@@ -132,7 +141,7 @@
               />
             </picture>
           </div>
-          <div class="row__medium-8 row__medium-8--smaller">
+          <div class="row__medium-8">
             <div class="generic-content-container">
               <h2 class="headline headline--no-t-margin">
                 Here&rsquo;s how we got started&hellip;
