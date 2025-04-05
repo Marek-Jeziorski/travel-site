@@ -1,14 +1,7 @@
 const currentTask = process.env.npm_lifecycle_event;
-
-// TODO - delete below?
-const { prototype } = require('events');
-const { watch } = require('fs');
-
-// TODO - read about loaders and require below
-// what's the difference between loader vs. plugin
-
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const postCSSPlugins = [
   require('postcss-import'),
@@ -30,6 +23,7 @@ let cssConfig = {
   ],
 };
 
+// COMMON -----------------------------------------------------
 let config = {
   entry: './app/assets/scripts/App.js',
   module: {
@@ -37,6 +31,7 @@ let config = {
   },
 };
 
+// DEVELOP ----------------------------------------------------
 if (currentTask == 'dev') {
   cssConfig.use.unshift('style-loader');
 
@@ -59,6 +54,7 @@ if (currentTask == 'dev') {
   config.mode = 'development';
 }
 
+// BUILD -----------------------------------------------------
 if (currentTask == 'build') {
   cssConfig.use.unshift(MiniCssExtractPlugin.loader);
 
@@ -73,6 +69,8 @@ if (currentTask == 'build') {
     splitChunks: {
       chunks: 'all',
     },
+    minimize: true,
+    minimizer: [`...`, new CssMinimizerPlugin()],
   };
 
   config.plugins = [
