@@ -3,6 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const fse = require('fs-extra');
 
 const postCSSPlugins = [
   require('postcss-import'),
@@ -24,15 +25,22 @@ let cssConfig = {
   ],
 };
 
+let pages = fse
+  .readdirSync('./app')
+  .filter(function (file) {
+    return file.endsWith('.html');
+  })
+  .map(function (page) {
+    return new HtmlWebpackPlugin({
+      filename: page,
+      template: `./app/${page}`,
+    });
+  });
+
 // COMMON -----------------------------------------------------
 let config = {
   entry: './app/assets/scripts/App.js',
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './app/index.html',
-    }),
-  ],
+  plugins: pages,
   module: {
     rules: [cssConfig],
   },
