@@ -17,7 +17,7 @@ const postCSSPlugins = [
 class RunAfterCompile {
   apply(compiler) {
     compiler.hooks.done.tap('Copy images', () =>
-      fse.copySync('./app/assets/images', './dist/assets/images')
+      fse.copySync('./app/assets/images', './docs/assets/images')
     );
   }
 }
@@ -60,7 +60,7 @@ if (currentTask == 'dev') {
 
   config.output = {
     filename: 'bundled.js',
-    path: path.resolve(__dirname, 'app'),
+    path: path.resolve(__dirname, 'docs'),
   };
 
   config.devServer = {
@@ -95,7 +95,7 @@ if (currentTask == 'build') {
   config.output = {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     clean: true,
   };
 
