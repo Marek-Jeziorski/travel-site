@@ -14,6 +14,14 @@ const postCSSPlugins = [
   require('autoprefixer'),
 ];
 
+class RunAfterCompile {
+  apply(compiler) {
+    compiler.hooks.done.tap('Copy images', () =>
+      fse.copySync('./app/assets/images', './dist/assets/images')
+    );
+  }
+}
+
 let cssConfig = {
   test: /\.css$/i,
   use: [
@@ -73,6 +81,17 @@ if (currentTask == 'dev') {
 if (currentTask == 'build') {
   cssConfig.use.unshift(MiniCssExtractPlugin.loader);
 
+  config.module.rules.push({
+    test: /\.js$/,
+    exclude: /(node_modules)/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+      },
+    },
+  });
+
   config.output = {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
@@ -89,7 +108,8 @@ if (currentTask == 'build') {
   };
 
   config.plugins.push(
-    new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' })
+    new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' }),
+    new RunAfterCompile()
   );
 
   config.mode = 'production';
