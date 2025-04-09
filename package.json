@@ -1,23 +1,30 @@
 {
   "name": "travel-site",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "lodash": "^4.17.21",
-    "normalize.css": "^8.0.1",
-    "webpack-dev-server": "^5.1.0"
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
     "autoprefixer": "^10.4.20",
+    "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "fs-extra": "^11.3.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
     "postcss-hexrgba": "^2.1.0",
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
@@ -26,6 +33,7 @@
     "postcss-simple-vars": "^7.0.1",
     "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   }
 }
