@@ -1,5 +1,6 @@
 app/bundled.js
 dist/
+docs/
 # Numerous always-ignore extensions
 *.diff
 *.err
