@@ -10,7 +10,7 @@ class ClientArea {
   }
 
   events() {
-    document.form.addEventListener('submit', (e) => {
+    this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       this.sendRequest();
     });
